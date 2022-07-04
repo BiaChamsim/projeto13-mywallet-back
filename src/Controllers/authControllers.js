@@ -95,7 +95,9 @@ export async function loginUser(req, res){
             res.status(401).send("Email ou senha incorretos");
         }    
     }catch(error){
+        res.sendStatus(500)
         console.log(error)
     }
 
 }
+   

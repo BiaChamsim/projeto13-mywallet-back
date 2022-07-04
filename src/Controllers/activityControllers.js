@@ -20,17 +20,7 @@ mongoClient.connect().then(() => {
 
 
 export async function userIncome(req, res){
-    try{
-        const income = req.body; //value, description
-        const { authorization } = req.headers;
-        const token = authorization?.replace("Bearer ", "")
-
-        const sessionData = await db.collection("sessions").findOne({token})
-
-        if(!sessionData){
-            return res.sendStatus(401)
-        }
-
+    try{     
         const incomeSchema = joi.object({
             value: joi.number().required(),
             description: joi.string().required()
@@ -42,9 +32,7 @@ export async function userIncome(req, res){
             return
         }
 
-        await db
-        .collection("balance")
-        .insertOne({
+        await db.collection("balance").insertOne({
             value: income.value, 
             description: income.description, 
             type:"income", 
