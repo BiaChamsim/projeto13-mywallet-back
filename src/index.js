@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import 'dayjs/locale/pt-br.js';
 import activityRoutes from './Routes/activityRoutes.js';
 import authRoutes from './Routes/authRoutes.js';
-import validateUser from './Middlewares/validateUser.js';
+
 
 
 dotenv.config();
@@ -16,8 +16,8 @@ app.use(cors());
 app.use(json());
 
 
-app.use(validateUser, activityRoutes);
-app.use(validateUser, authRoutes);
+app.use(authRoutes);
+app.use(activityRoutes);
 
 
 

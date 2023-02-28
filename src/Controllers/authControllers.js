@@ -15,11 +15,12 @@ const mongoClient = new MongoClient(URL_CONNECT_MONGO, { useNewUrlParser: true, 
 let db;
 
 mongoClient.connect().then(() => {
-	db = mongoClient.db("my_wallet");
+	db = mongoClient.db("cluster0");
 });
 
 export async function createUser(req, res){
     try{
+        console.log("teste")
         const newUser = req.body; //(name, email, password, confirmation)
 
         //senha deve conter no mínimo 8 caracteres: 

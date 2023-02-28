@@ -7,7 +7,7 @@ const mongoClient = new MongoClient(URL_CONNECT_MONGO, { useNewUrlParser: true, 
 let db;
 
 mongoClient.connect().then(() => {
-	db = mongoClient.db("my_wallet");
+	db = mongoClient.db("cluster0");
 });
 
 async function validateUser(req, res, next){
